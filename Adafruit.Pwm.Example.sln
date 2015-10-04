@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adafruit.Pwm", "Adafruit.Pwm\Adafruit.Pwm.csproj", "{E075796C-E61B-4DFC-B0DA-AC5241EF1082}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DD0CDD32-E5F4-48AA-9FE9-6CCCB4EBC07B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adafruit.Pwm.Example", "Adafruit.Pwm.Example\Adafruit.Pwm.Example.csproj", "{DF6EE86C-3736-4AD1-9333-FC5950F78117}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Debug|ARM.Build.0 = Debug|ARM
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Release|ARM.ActiveCfg = Release|ARM
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Release|ARM.Build.0 = Release|ARM
+		{DF6EE86C-3736-4AD1-9333-FC5950F78117}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DF6EE86C-3736-4AD1-9333-FC5950F78117}.Debug|ARM.Build.0 = Debug|ARM
+		{DF6EE86C-3736-4AD1-9333-FC5950F78117}.Debug|ARM.Deploy.0 = Debug|ARM
+		{DF6EE86C-3736-4AD1-9333-FC5950F78117}.Release|ARM.ActiveCfg = Release|ARM
+		{DF6EE86C-3736-4AD1-9333-FC5950F78117}.Release|ARM.Build.0 = Release|ARM
+		{DF6EE86C-3736-4AD1-9333-FC5950F78117}.Release|ARM.Deploy.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

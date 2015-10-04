@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adafruit.Pwm", "Adafruit.Pwm\Adafruit.Pwm.csproj", "{E075796C-E61B-4DFC-B0DA-AC5241EF1082}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Debug|ARM.Build.0 = Debug|ARM
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Release|ARM.ActiveCfg = Release|ARM
+		{E075796C-E61B-4DFC-B0DA-AC5241EF1082}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

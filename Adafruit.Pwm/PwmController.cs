@@ -10,7 +10,7 @@ using Windows.Devices.Pwm;
 using Windows.Devices.Pwm.Provider;
 using Windows.Foundation;
 
-namespace Adafruit.PwmController
+namespace Adafruit.Pwm
 {
     /// <summary>
     /// C# implementation of Adafruit PWM Servo Pi Hat driver based on C++ sample code
@@ -106,10 +106,10 @@ namespace Adafruit.PwmController
         }
 
         /// <summary>
-        /// toggles the pulse for a given pin
+        /// toggles the pulse for a given pin; note: to completely shut off an LED, send in a value of 4096
         /// </summary>
         /// <param name="pin">the pin between 0 and 15</param>
-        /// <param name="dutyCycle">value between 0-4095; if maximum value exceeded, 4096 will be used</param>
+        /// <param name="dutyCycle">value between 0-4095; if maximum value exceeded, 4095 will be used</param>
         /// <param name="invertPolarity"></param>
         public void SetPulseParameters(int pin, double dutyCycle, bool invertPolarity = false)
         {
@@ -124,7 +124,7 @@ namespace Adafruit.PwmController
 
             if (invertPolarity)
             {
-                // Special value for signal fully on.
+                // Special value for signal fully on/off.
                 switch (value)
                 {
                     case 0:
@@ -133,6 +133,9 @@ namespace Adafruit.PwmController
                     case 4095:
                         SetPwm(channel, 0, 4095);
                         break;
+                    case 4096:
+                        SetPwm(channel, 0, 4096);
+                        break;
                     default:
                         SetPwm(channel, 0, (ushort)(4095 - value));
                         break;
@@ -140,11 +143,14 @@ namespace Adafruit.PwmController
             }
             else
             {
-                // Special value for signal fully on. 
+                // Special value for signal fully on/off. 
                 switch (value)
                 {
                     case 4095:
                         SetPwm(channel, 4095, 0);
+                        break;
+                    case 4096:
+                        SetPwm(channel, 4096, 0);
                         break;
                     case 0:
                         SetPwm(channel, 0, 4095);
@@ -157,25 +163,27 @@ namespace Adafruit.PwmController
         }
 
         /// <summary>
-        /// toggles the pulse for all pins
+        /// toggles the pulse for all pins; note: to completely shut off an LED, send in a value of 4096
         /// </summary>
-        /// <param name="dutyCycle">value between 0-4095; if maximum value exceeded, 4096 will be used</param>
+        /// <param name="value">value between 0-4095; if maximum value exceeded, 4095 will be used</param>
         /// <param name="invertPolarity"></param>
-        public void SetPulseParameters(double dutyCycle, bool invertPolarity = false)
+        public void SetPulseParameters(double value, bool invertPolarity = false)
         {
             // Clamp value between 0 and 4095 inclusive. 
-            dutyCycle = Math.Min(dutyCycle, 4095);
-            ushort value = (ushort)dutyCycle;
+            value = Math.Min(value, 4095);
 
             if (invertPolarity)
             {
                 // Special value for signal fully on.
-                switch (value)
+                switch ((ushort)value)
                 {
                     case 0:
-                        SetAllPwm(4096, 0);
+                        SetAllPwm(4095, 0); 
                         break;
                     case 4095:
+                        SetAllPwm(0, 4095);
+                        break;
+                    case 4096:
                         SetAllPwm(0, 4096);
                         break;
                     default:
@@ -186,20 +194,24 @@ namespace Adafruit.PwmController
             else
             {
                 // Special value for signal fully on. 
-                switch (value)
+                switch ((ushort)value)
                 {
                     case 4095:
+                        SetAllPwm(4095, 0);
+                        break;
+                    case 4096:
                         SetAllPwm(4096, 0);
                         break;
                     case 0:
-                        SetAllPwm(0, 4096);
+                        SetAllPwm(0, 4095);
                         break;
                     default:
-                        SetAllPwm(0, value);
+                        SetAllPwm(0, (ushort)value);
                         break;
                 }
             }
         }
+
         /// <summary>
         /// Toggles a pin
         /// </summary>
@@ -249,7 +261,7 @@ namespace Adafruit.PwmController
         }
 
         /// <summary>
-        /// Specifies the frequency; defaults to 60hz if not set
+        /// Specifies the frequency; defaults to 60hz if not set. This determines how many full pulses per second are generated.
         /// </summary>
         /// <param name="frequency">A number representing the frequency in Hz, between 40 and 1000</param>
         public double SetDesiredFrequency(double frequency)
